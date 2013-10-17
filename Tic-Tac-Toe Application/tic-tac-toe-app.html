@@ -1,0 +1,134 @@
+<html>
+  <head>
+    <title>Tic-Tac-Toe App!</title>
+    <script language="Javascript" type="text/javascript">
+		var turn = "X";
+		function solved()
+			{
+				document.getElementById("button1_1").disabled = true; 
+				document.getElementById("button1_2").disabled = true;
+				document.getElementById("button1_3").disabled = true;		
+				document.getElementById("button2_1").disabled = true; 
+				document.getElementById("button2_2").disabled = true;
+				document.getElementById("button2_3").disabled = true;
+				document.getElementById("button3_1").disabled = true; 
+				document.getElementById("button3_2").disabled = true;
+				document.getElementById("button3_3").disabled = true;				
+				alert(turn+"'s won!!!");
+			}
+		function checkIfSolved(id)
+			{
+				switch (id)
+					{
+					case "button1_1":
+					  if(	(document.getElementById("button1_2").innerHTML == turn &&
+							document.getElementById("button1_3").innerHTML == turn) ||
+							(document.getElementById("button2_1").innerHTML == turn &&
+							document.getElementById("button3_1").innerHTML == turn) ||
+							(document.getElementById("button2_2").innerHTML == turn &&
+							document.getElementById("button3_3").innerHTML == turn))
+						{solved()}
+					  break;
+					case "button1_2":
+					  if(	(document.getElementById("button1_1").innerHTML == turn &&
+							document.getElementById("button1_3").innerHTML == turn) ||
+							(document.getElementById("button2_2").innerHTML == turn &&
+							document.getElementById("button3_2").innerHTML == turn))
+						{solved()}
+					  break;
+					case "button1_3":
+					  if(	(document.getElementById("button1_1").innerHTML == turn &&
+							document.getElementById("button1_2").innerHTML == turn) ||
+							(document.getElementById("button2_3").innerHTML == turn &&
+							document.getElementById("button3_3").innerHTML == turn) ||
+							(document.getElementById("button2_2").innerHTML == turn &&
+							document.getElementById("button3_1").innerHTML == turn))
+						{solved()}
+					  break;
+					case "button2_1":
+					  if(	(document.getElementById("button2_2").innerHTML == turn &&
+							document.getElementById("button2_3").innerHTML == turn) ||
+							(document.getElementById("button1_1").innerHTML == turn &&
+							document.getElementById("button3_1").innerHTML == turn))
+						{solved()}
+					  break;
+					case "button2_2":
+					  if(	(document.getElementById("button2_1").innerHTML == turn &&
+							document.getElementById("button2_3").innerHTML == turn) ||
+							(document.getElementById("button1_2").innerHTML == turn &&
+							document.getElementById("button3_2").innerHTML == turn) ||
+							(document.getElementById("button1_1").innerHTML == turn &&
+							document.getElementById("button3_3").innerHTML == turn) ||
+							(document.getElementById("button3_1").innerHTML == turn &&
+							document.getElementById("button1_3").innerHTML == turn))
+						{solved()}
+					  break;
+					case "button2_3":
+					  if(	(document.getElementById("button2_1").innerHTML == turn &&
+							document.getElementById("button2_2").innerHTML == turn) ||
+							(document.getElementById("button1_3").innerHTML == turn &&
+							document.getElementById("button3_3").innerHTML == turn))
+						{solved()}
+					  break;
+					case "button3_1":
+					  if(	(document.getElementById("button3_2").innerHTML == turn &&
+							document.getElementById("button3_3").innerHTML == turn) ||
+							(document.getElementById("button1_1").innerHTML == turn &&
+							document.getElementById("button2_1").innerHTML == turn) ||
+							(document.getElementById("button2_2").innerHTML == turn &&
+							document.getElementById("button1_3").innerHTML == turn))
+						{solved()}
+					  break;
+					case "button3_2":
+					  if(	(document.getElementById("button3_1").innerHTML == turn &&
+							document.getElementById("button3_3").innerHTML == turn) ||
+							(document.getElementById("button1_2").innerHTML == turn &&
+							document.getElementById("button2_2").innerHTML == turn))
+						{solved()}
+					  break;
+					case "button3_3":
+					  if(	(document.getElementById("button3_1").innerHTML == turn &&
+							document.getElementById("button3_2").innerHTML == turn) ||
+							(document.getElementById("button1_3").innerHTML == turn &&
+							document.getElementById("button2_3").innerHTML == turn) ||
+							(document.getElementById("button1_1").innerHTML == turn &&
+							document.getElementById("button2_2").innerHTML == turn))
+						{solved()}
+					  break;					  
+					}
+				if (turn == "O")
+					{
+						turn = "X";
+					}
+				else
+					{
+						turn = "O";
+					}
+			}
+		function changeLabel(id)
+			{
+				document.getElementById(id).innerHTML = turn;
+				document.getElementById(id).disabled = true; 
+				checkIfSolved(id)
+			}
+    </script>
+  </head>
+  <body>
+  <script type="text/Javascript">
+
+</script>
+
+<button id="button1_1" onclick="changeLabel('button1_1')">_</button>
+<button id="button1_2" onclick="changeLabel('button1_2')">_</button>  
+<button id="button1_3" onclick="changeLabel('button1_3')">_</button>    
+<br>
+<button id="button2_1" onclick="changeLabel('button2_1')">_</button>
+<button id="button2_2" onclick="changeLabel('button2_2')">_</button>  
+<button id="button2_3" onclick="changeLabel('button2_3')">_</button>    
+<br>
+<button id="button3_1" onclick="changeLabel('button3_1')">_</button>
+<button id="button3_2" onclick="changeLabel('button3_2')">_</button>  
+<button id="button3_3" onclick="changeLabel('button3_3')">_</button>    
+<br>
+  </body>
+</html>
