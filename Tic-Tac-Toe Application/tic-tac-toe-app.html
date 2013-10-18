@@ -1,10 +1,15 @@
+<!--Tic Tac Toe Application for Flatiron School Interview By Corbin Page -->
 <html>
   <head>
     <title>Tic-Tac-Toe App!</title>
+	<script type="text/javascript" src="jquery-1.10.2.js"></script>
     <script language="Javascript" type="text/javascript">
 		var turn = "X";
+		var numTurn = 0;
+		
 		function solved()
 			{
+				$("#buttonReload").show();	
 				document.getElementById("button1_1").disabled = true; 
 				document.getElementById("button1_2").disabled = true;
 				document.getElementById("button1_3").disabled = true;		
@@ -14,7 +19,8 @@
 				document.getElementById("button3_1").disabled = true; 
 				document.getElementById("button3_2").disabled = true;
 				document.getElementById("button3_3").disabled = true;				
-				alert(turn+"'s won!!!");
+				document.getElementById("celebrate").innerHTML = turn+"'s Won!!";
+				$("#celebrate").show();
 			}
 		function checkIfSolved(id)
 			{
@@ -96,6 +102,21 @@
 						{solved()}
 					  break;					  
 					}
+
+			}
+		function changeLabel(id)
+			{
+				document.getElementById(id).innerHTML = turn;
+				document.getElementById(id).disabled = true; 
+				numTurn += 1;
+				if (numTurn >= 5)
+					{
+					checkIfSolved(id)
+					}
+				if (numTurn >= 9)
+					{
+						itsADraw();
+					}
 				if (turn == "O")
 					{
 						turn = "X";
@@ -105,30 +126,68 @@
 						turn = "O";
 					}
 			}
-		function changeLabel(id)
+			
+		function itsADraw()
 			{
-				document.getElementById(id).innerHTML = turn;
-				document.getElementById(id).disabled = true; 
-				checkIfSolved(id)
+				
+				$("#buttonReload").show();	
+				document.getElementById("celebrate").innerHTML = "It's a Draw!!!";
+				$("#celebrate").show();
 			}
-    </script>
-  </head>
-  <body>
-  <script type="text/Javascript">
 
+		function reload()
+			{
+				$("#celebrate").hide();	
+				document.getElementById("button1_1").innerHTML = "_"; 
+				document.getElementById("button1_2").innerHTML = "_";
+				document.getElementById("button1_3").innerHTML = "_";		
+				document.getElementById("button2_1").innerHTML = "_"; 
+				document.getElementById("button2_2").innerHTML = "_";
+				document.getElementById("button2_3").innerHTML = "_";
+				document.getElementById("button3_1").innerHTML = "_"; 
+				document.getElementById("button3_2").innerHTML = "_";
+				document.getElementById("button3_3").innerHTML = "_";
+				numTurn = 0;
+				turn = "X";
+				document.getElementById("button1_1").disabled = false; 
+				document.getElementById("button1_2").disabled = false;
+				document.getElementById("button1_3").disabled = false;		
+				document.getElementById("button2_1").disabled = false; 
+				document.getElementById("button2_2").disabled = false;
+				document.getElementById("button2_3").disabled = false;
+				document.getElementById("button3_1").disabled = false; 
+				document.getElementById("button3_2").disabled = false;
+				document.getElementById("button3_3").disabled = false;
+				$("#buttonReload").hide();					
+			}
+
+
+
+
+			</script>
+</head>
+<body  style="background-image:url(background.png);background-repeat:no-repeat;">
+<button id="button1_1" onclick="changeLabel('button1_1')" style="height:100px; width:100px; position:fixed; top:10px; left:10px;">_</button>    
+<button id="button1_2" onclick="changeLabel('button1_2')" style="height:100px; width:100px; position:fixed; top:10px; left:140px;">_</button>    
+<button id="button1_3" onclick="changeLabel('button1_3')" style="height:100px; width:100px; position:fixed; top:10px; left:285px;">_</button>    
+<br>
+<button id="button2_1" onclick="changeLabel('button2_1')" style="height:100px; width:100px; position:fixed; top:150px; left:10;">_</button>
+<button id="button2_2" onclick="changeLabel('button2_2')" style="height:100px; width:100px; position:fixed; top:150px; left:140px;">_</button>  
+<button id="button2_3" onclick="changeLabel('button2_3')" style="height:100px; width:100px; position:fixed; top:150px; left:285px;">_</button>    
+<br>
+<button id="button3_1" onclick="changeLabel('button3_1')" style="height:100px; width:100px; position:fixed; top:300px; left:10px;">_</button>
+<button id="button3_2" onclick="changeLabel('button3_2')" style="height:100px; width:100px; position:fixed; top:300px; left:140px;">_</button>  
+<button id="button3_3" onclick="changeLabel('button3_3')" style="height:100px; width:100px; position:fixed; top:300px; left:285px;">_</button>    
+<br>
+<br>
+<div>
+<button id="buttonReload" onclick="reload()" style="height:50px; width:150px; position:fixed; top:50x; left:500;">Rematch?</button>
+</div>
+<div id = "celebrate" style="position:fixed; top:43px; left:510;">
+Blank
+</div>
+<script>
+reload();	
 </script>
-
-<button id="button1_1" onclick="changeLabel('button1_1')">_</button>
-<button id="button1_2" onclick="changeLabel('button1_2')">_</button>  
-<button id="button1_3" onclick="changeLabel('button1_3')">_</button>    
-<br>
-<button id="button2_1" onclick="changeLabel('button2_1')">_</button>
-<button id="button2_2" onclick="changeLabel('button2_2')">_</button>  
-<button id="button2_3" onclick="changeLabel('button2_3')">_</button>    
-<br>
-<button id="button3_1" onclick="changeLabel('button3_1')">_</button>
-<button id="button3_2" onclick="changeLabel('button3_2')">_</button>  
-<button id="button3_3" onclick="changeLabel('button3_3')">_</button>    
-<br>
   </body>
 </html>
